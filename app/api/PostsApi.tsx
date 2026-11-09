@@ -1,8 +1,9 @@
+import { BASE_URL } from "../constans";
 import { Response } from "../types/Post";
 
 export const getPostApi = async(): Promise<Response> => {
   //APIの取得
-  const res = await fetch("https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/posts");
+  const res = await fetch(`${BASE_URL}/dev/posts`);
 
   //404,505の判定
   if(!res.ok){

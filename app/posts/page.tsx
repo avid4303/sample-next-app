@@ -73,7 +73,7 @@ export default function Posts() {
       <h1 className="mb-4 text-[1.4rem] font-bold text-gray-900">記事一覧</h1>
       {posts.map(post =>(
 
-        <Link href={`/PostDetail/${post.id}`} key={post.id}>
+        <Link href={`/post_detail/${post.id}`} key={post.id}>
           <article  key={post.id} className="grid grid-cols-[200px_1fr] gap-4 py-4 border-b border-gray-200">
             {/* ➀ */}
             <Image

@@ -1,9 +1,9 @@
-import { BASE_URL } from"../constans";
+import { BASE_URL } from "../constans";
 import { Form } from "../types/Post";
 
 export const setInquiryApi = async (formData: Form) => {
 
-  const res = await fetch(`${BASE_URL}/constans`,{
+  const res = await fetch(`${BASE_URL}/dev/contacts`,{
     method: "POST",
     headers: {
       "Content-Type": "application/json",
