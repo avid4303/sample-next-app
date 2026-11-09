@@ -99,9 +99,9 @@ export default function Posts() {
 
                 {/* ➂ */}
                 <div className="flex flex-wrap gap-[6px]">
-                  {post.categories.map(categori => (
-                    <span className="px-2 py-1 rounded-full bg-gray-200 text-gray-700 text-[0.85rem]" key={categori}>
-                      {categori}
+                  {post.categories.map(category => (
+                    <span className="px-2 py-1 rounded-full bg-gray-200 text-gray-700 text-[0.85rem]" key={category}>
+                      {category}
                     </span>
                   ))}
                 </div>

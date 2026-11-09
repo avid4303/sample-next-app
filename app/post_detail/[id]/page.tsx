@@ -104,9 +104,9 @@ export default function PostDetail(){
         </time>
         {/* ➂ */}
         <div className="flex flex-wrap gap-[6px]">
-          {post.categories.map(categori => (
-            <span className="py-1 px-2 rounded-full bg-gray-200 text-gray-700 text-[.8rem]" key={categori}>
-              {categori}
+          {post.categories.map(category => (
+            <span className="py-1 px-2 rounded-full bg-gray-200 text-gray-700 text-[.8rem]" key={category}>
+              {category}
             </span>
           ))}
         </div>
