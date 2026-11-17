@@ -1,5 +1,5 @@
-import { BASE_URL } from "../constans";
-import { Form } from "../types/Post";
+import { BASE_URL } from "../../constans";
+import { Form } from "../../types/Post";
 
 export const setInquiryApi = async (formData: Form) => {
 

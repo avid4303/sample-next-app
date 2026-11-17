@@ -4,7 +4,7 @@ import { useState, type ChangeEvent, type SubmitEvent } from "react";
 
 import type { Form, ValiData } from "../types/Post";
 
-import { setInquiryApi } from "../api/InquiryApi";
+import { setInquiryApi } from "../api/Inquiry/InquiryApi";
 
 export default function Inquiry(){
 

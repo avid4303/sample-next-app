@@ -4,15 +4,15 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import type { Post } from '../types/Post';
-import { getPostApi } from '../api/PostsApi';
+import type { MicroCmsPost } from '../types/Post';
+import { getPostApi } from '../api/posts/PostsApi';
 
 import  LoadingMessage  from '../_components/common/LoadingMessage';
 import  ErrorMessage  from '../_components/common/ErrorMessage';
 
 export default function Posts() {
 
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<MicroCmsPost[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
 
@@ -29,7 +29,7 @@ export default function Posts() {
         //APIの呼び出し
         const data = await getPostApi();
         //コンポーネントの更新
-        setPosts(data.posts);
+        setPosts(data.contents);
 
       //エラー処理
       }catch(err){
@@ -77,10 +77,10 @@ export default function Posts() {
           <article  key={post.id} className="grid grid-cols-[200px_1fr] gap-4 py-4 border-b border-gray-200">
             {/* ➀ */}
             <Image
-              src={post.thumbnailUrl}
+              src={post.thumbnail.url}
               alt={post.title}
-              width={300}
-              height={120}
+              width={post.thumbnail.width}
+              height={post.thumbnail.height}
               className="w-full h-auto"
               loading="eager"
             />
@@ -100,8 +100,8 @@ export default function Posts() {
                 {/* ➂ */}
                 <div className="flex flex-wrap gap-[6px]">
                   {post.categories.map(category => (
-                    <span className="px-2 py-1 rounded-full bg-gray-200 text-gray-700 text-[0.85rem]" key={category}>
-                      {category}
+                    <span className="px-2 py-1 rounded-full bg-gray-200 text-gray-700 text-[0.85rem]" key={category.id}>
+                      {category.name}
                     </span>
                   ))}
                 </div>

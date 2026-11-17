@@ -5,9 +5,9 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
-import { getPostDetailApi } from "../../api/PostDetailApi";
+import { getPostDetailApi } from "../../api/posts_detail/[id]/PostDetailApi";
 
-import type { Post } from "../../types/Post";
+import type { MicroCmsPost } from "../../types/Post";
 
 import LoadingMessage from "../../_components/common/LoadingMessage";
 import ErrorMessage from "../../_components/common/ErrorMessage";
@@ -16,7 +16,7 @@ export default function PostDetail(){
 
   const { id } = useParams<{id: string}>();
 
-  const [post, setPost] = useState<Post | null>(null);
+  const [post, setPost] = useState<MicroCmsPost | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
 
@@ -34,7 +34,7 @@ export default function PostDetail(){
       try{
         // 記事idを指定して詳細記事を取得
         const data = await getPostDetailApi(id);
-        setPost(data.post);
+        setPost(data);
 
       }catch(err){
         // API通信エラーをstateに保存
@@ -85,10 +85,10 @@ export default function PostDetail(){
     <div className="max-w-[800px] mx-auto pt-6 px-4 pb-12 flex flex-col gap-4">
       {/* ➀ */}
       <Image
-        src={post.thumbnailUrl}
+        src={post.thumbnail.url}
         alt={post.title}
-        width={800}
-        height={400}
+        width={post.thumbnail.width}
+        height={post.thumbnail.height}
         className="w-full h-auto"
         loading="eager"
       />
@@ -105,8 +105,8 @@ export default function PostDetail(){
         {/* ➂ */}
         <div className="flex flex-wrap gap-[6px]">
           {post.categories.map(category => (
-            <span className="py-1 px-2 rounded-full bg-gray-200 text-gray-700 text-[.8rem]" key={category}>
-              {category}
+            <span className="py-1 px-2 rounded-full bg-gray-200 text-gray-700 text-[.8rem]" key={category.id}>
+              {category.name}
             </span>
           ))}
         </div>
