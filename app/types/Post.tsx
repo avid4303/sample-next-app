@@ -1,20 +1,17 @@
-export type Post = {
-  id: number;
-  thumbnailUrl: string;
-  createdAt: string;
-  categories: string[];
-  title: string;
-  content: string;
-};
+export interface MicroCmsPost {
+  id: string
+  title: string
+  content: string
+  createdAt: string
+  categories: { id: string; name: string }[]
+  thumbnail: {url: string; height: number; width: number}
+} 
 
 export type Response = {
-  posts: Post[];
-};
-
-export type PostDetail = {
-  message: string;
-  post: Post;
+  contents: MicroCmsPost[];
 }
+
+export type PostDetail = MicroCmsPost;
 
 export type Form = {
   name: string;
